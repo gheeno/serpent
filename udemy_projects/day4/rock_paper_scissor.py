@@ -76,7 +76,7 @@ print_choice_ascii(computer_choice)
 # outcomes = {
 #     (0, 0): "It's a tie",
 #     (0, 1): "You lose :(",
-#     (0, 2): "You win!",
+#     (0, 2): u "Yowin!",
 #     (1, 0): "You win!",
 #     (1, 1): "It's a tie",
 #     (1, 2): "You lose :(",
