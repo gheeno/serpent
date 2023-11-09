@@ -1,46 +1,56 @@
-"Hangman game"
+"  Hangman game  "
 
 import random
 
 word_list = ["aardvark", "baboon", "camel"]
 
+
 def random_word_picker(arg):
     """ Random list picker. """
     return random.choice(arg)
 
-def get_guess_letter():
-    """ Input, save guessed letter. """
-    while True:
-        guessed_letter = input("Guess a letter: ").lower()
-        if len(guessed_letter) == 1:
-            return guessed_letter
-        print("Please enter a single letter.")
 
-def letter_checker(letter, random_word):
-    """ Boolean : if letters in the list, return true. """
-    letter_list = list(random_word)
-    for i in letter_list:
-        if i == letter:
-            print("Right")
-        else:
-            print("Wrong")
+def list_the_word(random_word):
+    " List a param. "
+    return list(random_word)
 
 
-def list_printer(_letter, _word):
-    """ Hangman list printer. """
-    _list = list(_word)
-    print(_list)
-    list_len = len(_list)
+def empty_list_maker(_word_list):
+    " Create an empty list. "
+    list_total = len(_word_list)
     count = 0
-    while count < list_len:
-        if not _list[count] == _letter:
-            _list[count] = "_"
-        count = count + 1
-    print(_list)
+    _blank_list = []
+    while count < list_total:
+        _blank_list.append("_")
+        count += 1
+    return _blank_list
 
+
+def list_updater(letter_param, list_1, list_2):
+    " list 2 updater. "
+    if letter_param in list_1:
+        # TODO-1 - if multiple characters are present it's only present on the initial underscore.
+        index = list_1.index(letter_param)
+        list_2[index] = letter_param
+    else:
+        print("Sorry, that letter is not in the word.")
+    return list_2
+
+#Scoring 
+# 1. each guessed letter, do not deduct health
+# 2. if user makes a mistake, "seorry that letter is not in the word"
+# 2a. deduct the health
+# 3. Draw hangman every failure.
 
 if __name__ == "__main__":
-    i = random_word_picker(word_list)
-    print(f"the random word : {i}")
-    letter = get_guess_letter()
-    list_printer(letter, i)
+    rand_word = random_word_picker(word_list)
+    print(f"the random word : '{rand_word}'")
+    _list = list(rand_word)
+    print(f"the random word as list \n{_list}")
+    _hidden_list_val = []
+    _hidden_list_val = empty_list_maker(_list)
+    while _list != _hidden_list_val:
+      guessed_letter = input("Guess a letter: ").lower()
+      _hidden_list_val = list_updater(guessed_letter, _list,
+                                        _hidden_list_val)
+      print(_hidden_list_val)
