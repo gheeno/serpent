@@ -1,0 +1,22 @@
+from dataclasses import dataclass, field
+import random
+
+def price_func():
+    return float(random.randrange(20,40))
+
+@dataclass
+class Book:
+    title: str = "No Title"
+    author: str = "No Name"
+    pages: int = 0
+    price: float = field(default_factory=price_func)
+
+
+b_default = Book()
+print(b_default)
+
+b1 = Book("War and peace", "Leo Tolstoy", 1234)
+b2 = Book("The Catcher in the Rye", "JD Salinger", 1234)
+
+print(b1)
+print(b2)
