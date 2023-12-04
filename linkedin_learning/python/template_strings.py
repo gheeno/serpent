@@ -5,6 +5,8 @@ def main():
     print(str1)
 
     templ = Template("Hello ${world}")
+    str2 = templ.substitute(world="world!")
+    print(str2)
 
 
 if __name__ == "__main__":
