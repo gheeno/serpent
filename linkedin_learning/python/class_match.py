@@ -40,4 +40,6 @@ for shape in shapes:
             print(f"Square area site : {shape.getarea()}")
         case Rectangle():
             print(f"Rectangle area site : {shape.getarea()}")
+        case _:
+            raise print("Need valid class.")
             
