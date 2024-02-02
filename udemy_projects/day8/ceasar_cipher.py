@@ -13,8 +13,22 @@ def encrypt(_text, _shift):
         else:
             container.append(char) 
     char_joined = ''.join(container)
-    print(f"container is {char_joined}")    
-    print(f"The encoded text is {_text}")
+    print(f"ENCRYPT : The encoded text is {char_joined}")
+    return char_joined
+
+
+def decrypt(_text, _shift):
+    container = []
+    for char in _text:
+        if char.isalpha():
+            index_found = alphabet.index(char)
+            encrypted_index = (index_found - _shift) % 26
+            container.append(alphabet[encrypted_index])
+        else:
+            container.append(char) 
+    char_joined = ''.join(container)
+    print(f"DECRYPT : Decoded text is {char_joined}")
 
 if __name__ == '__main__':
-    encrypt(text, shift)
+    e = encrypt(text, shift)
+    decrypt(e, shift)
