@@ -16,3 +16,12 @@ else :
 
 alien_0['x_position'] = alien_0['x_position'] + x_increment
 logging.info(f"Updated dictionary : \n {alien_0}")
+
+del alien_0['speed']
+logging.info(alien_0)
+
+for keys in alien_0.keys():
+    print(keys)
+
+
+print(list(alien_0.keys())[0])
